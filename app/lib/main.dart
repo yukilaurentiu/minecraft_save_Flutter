@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mcsaver_package/mcsaver_package.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -13,8 +14,13 @@ class MyApp extends StatefulWidget{
 }
 
 class _State extends State<MyApp>{
+
+  var menu = Menu();
+  
+
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
+    menu.init();
     return Scaffold(
       appBar: AppBar(
         title: const Text('Bar'),
@@ -23,9 +29,9 @@ class _State extends State<MyApp>{
         padding: const EdgeInsets.all(32.0),
         child: Center(
           child: Column(
-            children: const <Widget>[
+            children: <Widget>[
               Text('Hello'),
-              Text(''),
+              Text("${menu.stepCheckUsb()}"),
             ],
           )),
 
