@@ -47,7 +47,7 @@ class _McInitState extends State<McInit>{
               } 
               else if (snapshot.hasError) {
                 // return Text("${snapshot.error}");
-                return Text("error");
+                return const Text("error");
               }
               else {
                 return const CircularProgressIndicator();

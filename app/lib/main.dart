@@ -3,16 +3,13 @@ import 'dart:convert';
 
 // import 'package:app/test_widget.dart';
 
+import 'package:app/material.dart';
 import 'package:flutter/material.dart';
 import 'package:mcsaver_package/mcsaver_package.dart';
 import 'package:app/mc_init.dart';
 
-
 void main() {
-  runApp(MaterialApp(
-    home: MyApp(),
-  ));
-
+  runApp(MyApp());
 }
 
 class MyApp extends StatefulWidget{
@@ -40,7 +37,9 @@ class _State extends State<MyApp>{
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return MaterialApp(
+      theme: mainMaterial(),
+      home: Scaffold(
       appBar: AppBar(
         title: const Text('Mincraft Saver'),
       ),
@@ -51,50 +50,40 @@ class _State extends State<MyApp>{
             children: <Widget>[ 
               const Padding(
                 padding:  EdgeInsets.all(16.0),
-                child:  Text('Please Insert USB and save mincraft data',
-                style: TextStyle(fontSize: 24.0))
+                child:  Text('Welcome back! Please insert USB and save mincraft data!')
               ),
-              test(isStarted, handleTap),
-              hase()
-              // ElevatedButton(
-              //   // style: raisedButtonStyle,
-              //   onPressed: () {_handleTap();},
-              //   child: const Text('Button'),
-              // ),
+              getStarted(isStarted, handleTap),
+              startCheckUsbs()
             ])
         ),
+      )
       )
     );
   }
 
 
 
-   Widget hase() {
+   Widget startCheckUsbs() {
     if(isStarted){
       return McInit(menu, handleHasUsb);
     }
     return const Text('please insert usb');
 
-    // return const Padding(
-    //     padding:  EdgeInsets.all(16.0),
-    //     child:  Text('We cannot find any USB',
-    //     style: TextStyle(fontSize: 32.0, color: Color.fromARGB(255, 51, 122, 180)))
-    //   );
   }
 }
 
- Widget test(a, b) {
+ Widget getStarted(a, b) {
     if(a){
       return ElevatedButton(
       // style: raisedButtonStyle,
         onPressed: () {b();},
-        child: const Text('Load USB'),
+        child: const Text('Check USB'),
       );
     }
     return ElevatedButton(
       // style: raisedButtonStyle,
       onPressed: () {b();},
-      child: const Text('Load USB'),
+      child: const Text('Check USB'),
     );
   }
      // return FutureBuilder<int>(
@@ -111,3 +100,9 @@ class _State extends State<MyApp>{
                 //     }
                 //   }
                 // );
+
+  // return const Padding(
+    //     padding:  EdgeInsets.all(16.0),
+    //     child:  Text('We cannot find any USB',
+    //     style: TextStyle(fontSize: 32.0, color: Color.fromARGB(255, 51, 122, 180)))
+    //   );
